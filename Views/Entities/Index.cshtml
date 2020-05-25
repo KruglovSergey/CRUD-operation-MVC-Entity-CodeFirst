@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TeledocTask.Models.Entity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <p>
+            <a asp-action="Create" type="button" class="btn btn-success">Создать юр. лицо или ИП</a>
+        </p>
+    </div>
+    <div class="form-group col-md-3">
+        <p>
+            <a asp-action="CreateUCHR" type="button" class="btn btn-success">Добавить учредителя юр. лицу</a>
+        </p>
+    </div>
+</div>
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.INN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CrDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.INN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Обзор</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

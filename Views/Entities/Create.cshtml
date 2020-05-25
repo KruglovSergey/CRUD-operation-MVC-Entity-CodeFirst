@@ -1,0 +1,53 @@
+﻿@model TeledocTask.Models.Entity
+
+@{
+    List<Entity> UL = new List<Entity>();
+    if (ViewBag.List != null)
+    {
+        UL = ViewBag.List;
+    }
+
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white">Создание юр. лица или ИП</h1>
+
+<hr />
+<div class="row text-white">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" id="TitleText" class="control-label">Наименование</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="INN" class="control-label"></label>
+                <input asp-for="INN" class="form-control" />
+                <span asp-validation-for="INN" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="EntTypeSel">
+                <label asp-for="EntType" class="control-label"></label>
+                <select class="form-control valid" onchange="selectChange(this.value)" data-val="true" data-val-required="The Тип энтити field is required." id="EntType" name="EntType" aria-describedby="EntType-error" aria-invalid="false">
+                    <option value="0">Юр лицо</option>
+                    <option value="1">ИП</option>
+                </select>
+                <span asp-validation-for="EntType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cоздать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

@@ -1,0 +1,45 @@
+﻿@model TeledocTask.Models.Entity
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white">Edit</h1>
+
+<hr />
+<div class="row text-white">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="INN" class="control-label"></label>
+                <input asp-for="INN" class="form-control" />
+                <span asp-validation-for="INN" class="text-danger"></span>
+            </div>
+            <input asp-for="CrDate" type="hidden" class="form-control" />
+            <div class="form-group">
+                <label asp-for="EntType" class="control-label"></label>
+                <select asp-for="EntType" class="form-control" disabled asp-items="Html.GetEnumSelectList<EntType>()"></select>
+                <span asp-validation-for="EntType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

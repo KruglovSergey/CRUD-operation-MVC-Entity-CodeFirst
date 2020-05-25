@@ -1,0 +1,50 @@
+﻿@model TeledocTask.Models.Entity
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-white">Удаление</h1>
+
+<h3 class="text-white">Вы действительно хотите произвести удаление?</h3>
+<div class="text-white">
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.INN)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.INN)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CrDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CrDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ChDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ChDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EntType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EntType)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>
